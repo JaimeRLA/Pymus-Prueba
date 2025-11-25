@@ -4,53 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard</title>
+
+  <!-- ESTILOS PARA ELIMINAR LA BARRA BLANCA -->
   <style>
     body {
       margin: 0;
       padding: 0;
+      overflow-x: hidden !important; /* evita barra blanca horizontal */
+      background: #ffffff;
     }
+
     .tableauPlaceholder {
-      width: 100vw;
-      height: 100vh;
+      width: 100% !important;
+      max-width: 100% !important;
+      overflow: hidden !important;
+      position: relative;
+    }
+
+    .tableauPlaceholder object,
+    .tableauPlaceholder iframe {
+      width: 100% !important;
+      max-width: 100% !important;
+      border: none;
     }
   </style>
 </head>
 
 <body>
-  <!-- AQUÍ PEGAS TU CÓDIGO DE TABLEAU PUBLIC -->
-  
-<div class='tableauPlaceholder' id='viz1764105214800' style='position: relative'>
-  <noscript><a href='#'><img alt='Dashboard Final ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Py&#47;PymusPrueba&#47;DashboardFinal&#47;1_rss.png' style='border: none' /></a></noscript>
-  <object class='tableauViz'  style='display:none;'>
-    <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
-    <param name='embed_code_version' value='3' />
-    <param name='site_root' value='' />
-    <param name='name' value='PymusPrueba&#47;DashboardFinal' />
-    <param name='tabs' value='no' />
-    <param name='toolbar' value='yes' />
-    <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Py&#47;PymusPrueba&#47;DashboardFinal&#47;1.png' />
-    <param name='animate_transition' value='yes' />
-    <param name='display_static_image' value='yes' />
-    <param name='display_spinner' value='yes' />
-    <param name='display_overlay' value='yes' />
-    <param name='display_count' value='yes' />
-    <param name='language' value='es-ES' />
-    <param name='filter' value='publish=yes' />
-  </object>
-</div>
 
-<script type='text/javascript'>
-  var divElement = document.getElementById('viz1764105214800');
-  var vizElement = divElement.getElementsByTagName('object')[0];
+  <!-- TU CÓDIGO DE TABLEAU PUBLIC AQUÍ -->
 
-  vizElement.style.width = '100%';
-  vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+  <div class='tableauPlaceholder' id='viz1764105214800' style='position: relative'>
+    <noscript>
+      <a href='#'>
+        <img alt='Dashboard Final ' src='https://public.tableau.com/static/images/Py/PymusPrueba/DashboardFinal/1_rss.png' style='border: none' />
+      </a>
+    </noscript>
 
+    <object class='tableauViz' style='display:none;'>
+      <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+      <param name='embed_code_version' value='3' />
+      <param name='site_root' value='' />
+      <param name='name' value='PymusPrueba/DashboardFinal' />
+      <param name='tabs' value='no' />
+      <param name='toolbar' value='yes' />
+      <param name='static_image' value='https://public.tableau.com/static/images/Py/PymusPrueba/DashboardFinal/1.png' />
+      <param name='animate_transition' value='yes' />
+      <param name='display_static_image' value='yes' />
+      <param name='display_spinner' value='yes' />
+      <param name='display_overlay' value='yes' />
+      <param name='display_count' value='yes' />
+      <param name='language' value='es-ES' />
+      <param name='filter' value='publish=yes' />
+    </object>
+  </div>
 
-  var scriptElement = document.createElement('script');
-  scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-  vizElement.parentNode.insertBefore(scriptElement, vizElement);
-</script>
+  <!-- SCRIPT RESPONSIVE SIN BARRAS BLANCAS -->
+  <script type='text/javascript'>
+    var divElement = document.getElementById('viz1764105214800');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+
+    // aseguramos que SIEMPRE tenga 100% de ancho
+    vizElement.style.width = '100%';
+
+    // altura responsiva (ajustable si quieres)
+    vizElement.style.height = (window.innerHeight * 0.90) + 'px';
+
+    var scriptElement = document.createElement('script');
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+
+    // fijar el ancho después de cargar
+    window.addEventListener("load", () => {
+      const v = document.getElementsByClassName("tableauViz")[0];
+      v.style.width = "100%";
+      v.style.maxWidth = "100%";
+    });
+  </script>
 
 </body>
 </html>
